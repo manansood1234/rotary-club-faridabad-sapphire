@@ -141,7 +141,14 @@
 
         function App() {
             const [isMenuOpen, setIsMenuOpen] = useState(false);
+            const [scrolled, setScrolled] = useState(false);
             const [formData, setFormData] = useState({ name: '', interest: 'Volunteer', message: '' });
+
+               useEffect(() => {
+                const handleScroll = () => setScrolled(window.scrollY > 20);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
 
             const handleWhatsApp = (e) => {
                 e.preventDefault();
