@@ -153,38 +153,47 @@
                 <div className="font-sans text-slate-900 bg-white selection:bg-[#fece09] selection:text-[#00246c] overflow-x-hidden flex flex-col min-h-screen">
                 
                 {/* Navbar */}
-                <nav className="fixed w-full z-50 bg-white shadow-md py-3 border-b border-slate-100">
-                    <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center">
-                    <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-[#00246c] rounded-full flex items-center justify-center text-[#fece09] font-black text-xl shadow-md border-2 border-[#fece09]">S</div>
-                        <div>
-                            <h1 className="text-2xl font-black text-[#00246c] leading-none tracking-tight">Sapphire</h1>
-                            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Rotary Club Faridabad</p>
+               {/* Modern Floating Navbar */}
+                <div className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 flex justify-center">
+                    <nav className={`w-full max-w-7xl transition-all duration-500 rounded-2xl ${
+                        scrolled 
+                        ? 'bg-white/80 backdrop-blur-lg shadow-lg border border-white/20 py-3' 
+                        : 'bg-transparent py-4'
+                    }`}>
+                        <div className="px-6 flex justify-between items-center">
+                            <div className="flex items-center gap-3 group cursor-pointer">
+                                <div className="w-10 h-10 bg-rotary-blue rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg transform group-hover:rotate-6 transition-transform">S</div>
+                                <div>
+                                    <h1 className="text-2xl font-black text-rotary-blue leading-none tracking-tight">Sapphire</h1>
+                                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">Faridabad</p>
+                                </div>
+                            </div>
+                            <div className="hidden md:flex items-center space-x-10">
+                                {['Home', 'Projects', 'Team', 'Contact'].map(item => (
+                                    <NavLink key={item} href={`#${item.toLowerCase()}`}>{item}</NavLink>
+                                ))}
+                                <a href="#contact" className="px-6 py-2.5 bg-rotary-blue text-white font-bold rounded-xl hover:bg-rotary-darkBlue hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 border border-transparent hover:border-rotary-blue/30 flex items-center gap-2">
+                                    Join Us <ArrowUpRight className="w-4 h-4" />
+                                </a>
+                            </div>
+                            <button onClick={() => setIsMenuOpen(true)} className="md:hidden text-rotary-blue p-2 bg-slate-100 rounded-lg">
+                                <Menu className="w-6 h-6" />
+                            </button>
                         </div>
-                    </div>
-                    <div className="hidden md:flex items-center space-x-8">
-                        {['Home', 'Projects', 'Team', 'Contact'].map(item => (
-                            <NavLink key={item} href={`#${item.toLowerCase()}`}>{item}</NavLink>
-                        ))}
-                        <a href="#contact" className="px-6 py-2.5 bg-[#fece09] text-[#00246c] font-bold rounded-full hover:bg-[#eebb00] transition-transform transform hover:-translate-y-1 shadow-lg border border-[#00246c]/10">Join Us</a>
-                    </div>
-                    <button onClick={() => setIsMenuOpen(true)} className="md:hidden text-[#00246c]">
-                        <Menu className="w-8 h-8" />
-                    </button>
-                    </div>
-                </nav>
+                    </nav>
+                </div>
 
-                {/* Mobile Menu */}
+                {/* Mobile Menu Overlay */}
                 {isMenuOpen && (
-                    <div className="fixed inset-0 bg-white z-[60] p-6 flex flex-col animate-fade-in">
-                    <div className="flex justify-end mb-8">
-                        <button onClick={() => setIsMenuOpen(false)}><X className="w-10 h-10 text-[#00246c]" /></button>
-                    </div>
-                    <div className="flex flex-col space-y-6 text-center">
-                        {['Home', 'Projects', 'Team', 'Contact'].map(item => (
-                            <NavLink key={item} href={`#${item.toLowerCase()}`} mobile onClick={() => setIsMenuOpen(false)}>{item}</NavLink>
-                        ))}
-                    </div>
+                    <div className="fixed inset-0 bg-white/95 backdrop-blur-xl z-[60] flex flex-col animate-fade-in">
+                        <div className="p-6 flex justify-end">
+                            <button onClick={() => setIsMenuOpen(false)} className="p-2 bg-slate-100 rounded-full"><X className="w-6 h-6 text-rotary-blue" /></button>
+                        </div>
+                        <div className="flex-1 flex flex-col justify-center items-center space-y-2">
+                            {['Home', 'Projects', 'Team', 'Contact'].map(item => (
+                                <NavLink key={item} href={`#${item.toLowerCase()}`} mobile onClick={() => setIsMenuOpen(false)}>{item}</NavLink>
+                            ))}
+                        </div>
                     </div>
                 )}
 
