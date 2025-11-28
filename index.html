@@ -131,13 +131,22 @@
             return <span ref={ref}>{count}{suffix}</span>;
         };
 
-        const NavLink = ({ href, children, mobile = false }) => (
-            <a href={href} className={`font-bold tracking-wide transition-colors duration-300 ${
-                mobile ? 'text-2xl block py-4 text-[#00246c]' : 'text-slate-600 hover:text-[#00246c]'
-            }`}>
+        const NavLink = ({ href, children, mobile = false, delay }) => (
+            <a 
+                href={href} 
+                className={`relative font-medium text-sm tracking-wider uppercase transition-all duration-300 group ${
+                    mobile ? 'text-xl block py-4 text-rotary-blue font-bold normal-case' : 'text-slate-600 hover:text-rotary-blue opacity-0 animate-fade-in-right'
+                }`}
+                style={{ animationDelay: `${delay}ms` }}
+            >
                 {children}
+                {/* Improved Yellow Line Animation: Starts center, expands outwards */}
+                {!mobile && (
+                    <span className="absolute left-0 bottom-0 block w-full h-0.5 bg-rotary-gold transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100 origin-center"></span>
+                )}
             </a>
         );
+
 
         function App() {
             const [isMenuOpen, setIsMenuOpen] = useState(false);
