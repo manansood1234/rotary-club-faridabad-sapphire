@@ -269,37 +269,7 @@
                     </div>
                 </section>
 
-                {/* Team Section */}
-                <section id="team" className="py-24 bg-slate-50">
-                    <div className="max-w-7xl mx-auto px-4 md:px-8">
-                    <div className="text-center mb-16">
-                        <span className="text-[#00246c] font-bold uppercase tracking-widest text-sm">Leadership</span>
-                        <h2 className="text-5xl font-black text-[#00246c] mt-2">Meet the Torchbearers</h2>
-                    </div>
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {[
-                        { name: "Rtn. Anju Srivastava", role: "Secretary", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80" },
-                        { name: "Rtn. Dhirendra Srivastava", role: "President", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80" },
-                        { name: "Rtn. Ravi Krishna", role: "Treasurer", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&q=80" }
-                        ].map((member, idx) => (
-                        <div key={idx} className="group relative h-[450px] rounded-[2rem] overflow-hidden shadow-xl cursor-pointer hover:shadow-2xl transition-shadow duration-300">
-                            <img src={member.img} alt={member.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#00246c] via-[#00246c]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
-                            <div className="absolute bottom-0 left-0 w-full p-8 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                            <div className="h-1 w-12 bg-[#fece09] mb-4 rounded-full"></div>
-                            <h3 className="text-3xl font-black text-white mb-1">{member.name}</h3>
-                            <p className="text-[#fece09] font-bold uppercase tracking-widest text-sm">{member.role}</p>
-                            </div>
-                            <div className="absolute top-6 right-6 w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-100">
-                                <MessageCircle className="w-5 h-5" />
-                            </div>
-                        </div>
-                        ))}
-                    </div>
-                    </div>
-                </section>
-
-                    {/* --- TEAM SECTION 2 --- */}
+                    {/* --- TEAM SECTION --- */}
                 <section id="team" className="py-24 bg-slate-50 relative">
                     {/* Background Pattern */}
                     <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#00246c 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
